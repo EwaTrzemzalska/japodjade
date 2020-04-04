@@ -7,12 +7,12 @@
 module.exports = {
   /* Your site config here */
   siteMetadata: {
-    title: `Delog`,
+    title: `JAPODJADĘ`,
     description: `A starter blog demonstrating what Gatsby can do.`,
     siteUrl: `https://delog-w3layouts.netlify.com/`,
     home: {
-      title: `Hi! I'm Delog`,
-      description: `I have been specifically designed to become a digital home for designers and developers, help them build amazing professional looking websites with ease. You don't have to worry about nitty gritty of web hosting services to run a blog and yet take full advantage of CMS to manage content :)`,
+      title: `Cześć!`,
+      description: `Jesteśmy tu po to, zeby połączyć lokalnych dostawców z klientami!`,
     },
     /* W3Layouts domain verification key for contact forms https://my.w3layouts.com/Forms/ */
     w3l_dom_key: `5e609f7a2d23fCF_Domain_verify` 
