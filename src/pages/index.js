@@ -8,13 +8,12 @@ import HeroHeader from "../components/heroHeader"
 const IndexPage = ({
   data: {
     site,
-    allMarkdownRemark: { edges },
+    allAirtable: { edges },
   },
 }) => {
 
   const Posts = edges
-    .filter(edge => !!edge.node.frontmatter.date) // You can filter your posts based on some criteria
-    .map(edge => <PostLink key={edge.node.id} post={edge.node} />)
+    .map(edge => <PostLink key={edge.node.data.Nazwa} post={edge.node} />)
 
   return (
     <Layout>
@@ -23,7 +22,7 @@ const IndexPage = ({
         <meta name="description" content={site.siteMetadata.description} />
         {!site.siteMetadata.w3l_dom_key ? null : <meta name="w3l-domain-verification" content={site.siteMetadata.w3l_dom_key} />}
       </Helmet>
-      <HeroHeader/>
+      <HeroHeader />
       <h2>Lista Firm &darr;</h2>
       <div className="grids">
         {Posts}
@@ -42,16 +41,12 @@ export const pageQuery = graphql`
         w3l_dom_key
       }
     }
-    allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___date] }) {
+    allAirtable {
       edges {
         node {
-          id
-          excerpt(pruneLength: 250)
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            path
-            title
-            thumbnail
+          data {
+            Nazwa
+            Miasto
           }
         }
       }
