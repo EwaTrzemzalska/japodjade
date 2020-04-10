@@ -11,7 +11,6 @@ const IndexPage = ({
     allAirtable: { edges },
   },
 }) => {
-
   const Posts = edges
     .map(edge => <PostLink key={edge.node.data.Nazwa} post={edge.node} />)
 
@@ -47,6 +46,8 @@ export const pageQuery = graphql`
           data {
             Nazwa
             Miasto
+            Opis
+            Link
           }
         }
       }
