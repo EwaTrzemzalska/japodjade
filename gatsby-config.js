@@ -54,5 +54,18 @@ module.exports = {
     `gatsby-plugin-sass`, 
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify-cms`,
+    {
+    resolve: `gatsby-source-airtable`,
+    options: {
+      apiKey: `YOUR KEY`, // may instead specify via env, see below
+      concurrency: 5, // default, see using markdown and attachments for more information
+      tables: [
+        {
+          baseId: `YOUR BASE ID`,
+          tableName: `Wszystkie biznesy`
+        }
+      ]
+    }
+  }
   ],
 }
