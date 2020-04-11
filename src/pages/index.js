@@ -9,7 +9,7 @@ import CityNavigation from "../components/cityNavigation";
 const IndexPage = ({
   data: {
     site,
-    allAirtable: { edges },
+    allAirtable: { edges, distinct },
   },
 }) => {
   const Posts = edges
@@ -24,7 +24,7 @@ const IndexPage = ({
       </Helmet>
       <HeroHeader />
       <h2>Lista Firm &darr;</h2>
-      <CityNavigation cities={["Kraków", "Warszawa"]} />
+      <CityNavigation cities={distinct} />
       <div className="grids">
         {Posts}
       </div>
@@ -43,6 +43,7 @@ export const pageQuery = graphql`
       }
     }
     allAirtable {
+      distinct(field: data___Miasto)
       edges {
         node {
           data {
