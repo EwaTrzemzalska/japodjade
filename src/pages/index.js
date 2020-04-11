@@ -4,6 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from "../components/layout"
 import PostLink from "../components/post-link"
 import HeroHeader from "../components/heroHeader"
+import CityNavigation from "../components/cityNavigation";
 
 const IndexPage = ({
   data: {
@@ -23,6 +24,7 @@ const IndexPage = ({
       </Helmet>
       <HeroHeader />
       <h2>Lista Firm &darr;</h2>
+      <CityNavigation cities={["Kraków", "Warszawa"]} />
       <div className="grids">
         {Posts}
       </div>
