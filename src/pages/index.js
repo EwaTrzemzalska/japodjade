@@ -44,9 +44,14 @@ export const pageQuery = graphql`
       edges {
         node {
           data {
+            Logo {
+              url
+            }
             Nazwa
             Miasto
             Opis
+            Zamawianie
+            Bezludziowo
             Link
           }
         }
