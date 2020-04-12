@@ -1,6 +1,5 @@
 import React from "react"
 import { Link, useStaticQuery, graphql } from "gatsby"
-import Navigation from "../components/navigation"
 import 'prismjs/themes/prism-okaidia.css';
 
 export default ({ children }) => {
@@ -21,11 +20,11 @@ export default ({ children }) => {
         <div className="site-title">
           <Link to="/">{data.site.siteMetadata.title}</Link>
         </div>
-        <Navigation />
       </header>
       {children}
       <footer className="site-footer">
-        <p>&copy; 2020 Delog &bull; Crafted with <span role="img" aria-label="love">❤️</span> by <a href="https://w3layouts.com">W3Layouts</a></p>
+        <p>Crafted with <span role="img" aria-label="love">❤️</span> by <a href="https://github.com/EwaTrzemzalska" target="_blank">Ewa Trzemżalska</a> (source on <a href="https://github.com/EwaTrzemzalska/japodjade" target="_blank">GitHub)</a></p>
+        <p>Template by <a href="https://w3layouts.com" target="_blank">W3Layouts</a></p>
       </footer>
     </div>
   )
