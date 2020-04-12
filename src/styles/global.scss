@@ -23,6 +23,7 @@ a {
     text-decoration: underline;
   }
 }
+
 .site-wrapper {
   padding: 32px;
   max-width: 1140px;
@@ -171,7 +172,7 @@ a {
   margin-top: 32px;
 }
 .card {
-  display: grid;
+  padding: 20px;
   background:white;
   border-radius: 9px;
   border: 1px solid #eee;
@@ -181,11 +182,34 @@ a {
   &:hover .post-link {
     color: $primary-color;
   }
+
+  .img-container {
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  header {
+    margin-bottom: 10px;
+  }
+
+  h4.subtitle {
+    margin-top: 10px;
+    margin-bottom: 0;
+  } 
+
+  p {
+    overflow-wrap: break-word;
+  }
   > a img {
     display: block;
-  }
-  > header {
-    padding: 24px;
   }
   > h2:first-child {
     margin: 0 0 0.5rem 0;
