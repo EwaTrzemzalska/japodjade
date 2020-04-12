@@ -9,6 +9,7 @@ export default ({ cities }) => {
 
   return (
     <nav className="navigation"> 
+      <Link to="/">Wszystkie</Link>
       {Cities}
     </nav>
   )
