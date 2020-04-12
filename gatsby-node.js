@@ -16,7 +16,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const { createPage } = actions
 
-  const template = path.resolve(`src/templates/cityTemplate.js`)
+  const cityTemplate = path.resolve(`src/templates/cityTemplate.js`)
 
   const result = await graphql(`
     {
@@ -36,7 +36,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     console.log("Generating page for " + city)
     createPage({
       path: "/" + escapeDiacritics(city.toLowerCase()),
-      component: template,
+      component: cityTemplate,
       context: { city },
     })
   }
