@@ -1,5 +1,5 @@
 import React from "react"
-import { StaticQuery, graphql, Link } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 export default () => (
   <StaticQuery
     query={graphql`
@@ -20,7 +20,7 @@ export default () => (
         <div className="primary-content">
           <p>{data.site.siteMetadata.home.description}</p>
         </div>
-        <Link to='/contact' className="button -primary">Zgłoś się jako firma! &rarr;</Link>
+        <a href='https://airtable.com/shreMT5Q3JwwPcS9C' target="_blank" className="button -primary">Zgłoś się jako firma! &rarr;</a>
       </div>
     )}
   />
