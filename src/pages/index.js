@@ -42,7 +42,7 @@ export const pageQuery = graphql`
         w3l_dom_key
       }
     }
-    allAirtable(filter: {data: {Wy_wietlane: {eq: true}}}) {
+    allAirtable(filter: {data: {Published: {eq: true}}}) {
       distinct(field: data___Miasto)
       edges {
         node {
