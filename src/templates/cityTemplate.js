@@ -43,7 +43,7 @@ export const pageQuery = graphql`
         w3l_dom_key
       }
     }
-    businesses: allAirtable(filter: {data: {Miasto: {eq: $city}}}) {
+    businesses: allAirtable(filter: {data: {Wy_wietlane: {eq: true}, Miasto: {eq: $city}}}) {
       edges {
         node {
           data {
@@ -60,7 +60,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    cities: allAirtable {
+    cities: allAirtable(filter: {data: {Wy_wietlane: {eq: true}}}) {
         distinct(field: data___Miasto)
       }
   }
