@@ -54,7 +54,7 @@ export const pageQuery = graphql`
             Miasto
             Opis
             Kontakt
-            Bezludziowo
+            Bezkontaktowo
             Link
           }
         }
