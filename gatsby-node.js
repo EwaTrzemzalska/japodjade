@@ -16,7 +16,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const { createPage } = actions
 
-  const template = path.resolve(`src/pages/index.js`)
+  const template = path.resolve(`src/templates/cityTemplate.js`)
 
   const result = await graphql(`
     {
