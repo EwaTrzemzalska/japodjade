@@ -53,7 +53,7 @@ export const pageQuery = graphql`
             Nazwa
             Miasto
             Opis
-            Zamawianie
+            Kontakt
             Bezludziowo
             Link
           }
