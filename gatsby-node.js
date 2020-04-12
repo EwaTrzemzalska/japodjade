@@ -1,24 +1,27 @@
 const path = require(`path`)
 
+const escapeDiacritics = (s) => {
+  return s.replace(/ą/g, 'a').replace(/Ą/g, 'A')
+    .replace(/ć/g, 'c').replace(/Ć/g, 'C')
+    .replace(/ę/g, 'e').replace(/Ę/g, 'E')
+    .replace(/ł/g, 'l').replace(/Ł/g, 'L')
+    .replace(/ń/g, 'n').replace(/Ń/g, 'N')
+    .replace(/ó/g, 'o').replace(/Ó/g, 'O')
+    .replace(/ś/g, 's').replace(/Ś/g, 'S')
+    .replace(/ż/g, 'z').replace(/Ż/g, 'Z')
+    .replace(/ź/g, 'z').replace(/Ź/g, 'Z');
+}
+
 exports.createPages = async ({ actions, graphql, reporter }) => {
+
   const { createPage } = actions
 
-  const blogPostTemplate = path.resolve(`src/templates/blogTemplate.js`)
+  const cityTemplate = path.resolve(`src/templates/cityTemplate.js`)
 
   const result = await graphql(`
     {
-      allMarkdownRemark(
-        sort: { order: DESC, fields: [frontmatter___date] }
-        limit: 1000
-      ) {
-        edges {
-          node {
-            id
-            frontmatter {
-              path
-            }
-          }
-        }
+      allAirtable {
+        distinct(field: data___Miasto)
       }
     }
   `)
@@ -29,11 +32,13 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
-  result.data.allMarkdownRemark.edges.forEach(({ node }) => {
+  result.data.allAirtable.distinct.forEach((city) => {
+    console.log("Generating page for " + city)
     createPage({
-      path: node.frontmatter.path,
-      component: blogPostTemplate,
-      context: {}, // additional data can be passed via context
+      path: "/" + escapeDiacritics(city.toLowerCase()),
+      component: cityTemplate,
+      context: { city },
     })
-  })
+  }
+  )
 }
