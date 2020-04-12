@@ -6,7 +6,8 @@ const PostLink = ({ post }) => (
     <h1>{post.data.Nazwa}</h1>
     <h2>{post.data.Miasto}</h2>
     <p>{post.data.Opis}</p>
-    <a href={post.data.Link}>{post.data.Link}</a>
+    <p>Zamówienia - {post.data.Kontakt}</p>
+    <a href={post.data.Link} target="_blank">{post.data.Link}</a>
   </article>
 )
 export default PostLink
