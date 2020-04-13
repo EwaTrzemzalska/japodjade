@@ -12,7 +12,7 @@ module.exports = {
     siteUrl: `https://delog-w3layouts.netlify.com/`,
     home: {
       title: `Cześć!`,
-      description: `Jesteśmy tu po to, zeby połączyć lokalnych dostawców z klientami!`,
+      description: `Jesteśmy tu po to, żeby połączyć lokalnych dostawców z klientami!`,
     },
     /* W3Layouts domain verification key for contact forms https://my.w3layouts.com/Forms/ */
     w3l_dom_key: `5e609f7a2d23fCF_Domain_verify` 
@@ -47,7 +47,7 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         // The property ID; the tracking code won't be generated without it
-        trackingId: "UA-30027142-1",
+        trackingId: "UA-163532894-1",
         head: true,
       }
     },
