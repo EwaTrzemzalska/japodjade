@@ -3,8 +3,8 @@ import React from "react"
 const PostLink = ({ post }) => (
   
   <article className="card ">
-    <div class="img-container">
-      <img src={post.data.Logo[0].url} alt="Logo"></img>
+    <div className="img-container">
+      <img src={post.data.Logo.localFiles[0].publicURL} alt="Logo"></img>
     </div>
     <header>
       <h2 className="post-title">{post.data.Nazwa}</h2>

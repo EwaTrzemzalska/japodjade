@@ -48,8 +48,10 @@ export const pageQuery = graphql`
         node {
           data {
             Logo {
-              url
+            localFiles {
+              publicURL
             }
+          }
             Nazwa
             Miasto
             Opis
