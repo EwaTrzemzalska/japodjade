@@ -208,6 +208,11 @@ a {
   p {
     overflow-wrap: break-word;
   }
+
+  a {
+    overflow-wrap: break-word;
+  }
+  
   > a img {
     display: block;
   }
