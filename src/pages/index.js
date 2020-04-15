@@ -20,6 +20,13 @@ const IndexPage = ({
       <Helmet>
         <title>{site.siteMetadata.title}</title>
         <meta name="description" content={site.siteMetadata.description} />
+        <meta property="og:url" content="https://www.japodjade.pl" />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Japodjadę" />
+        <meta property="og:description" content="Jesteśmy tu po to, żeby połączyć lokalnych dostawców z klientami!" />
+        <meta property="og:image" content="https://www.japodjade.pl/assets/fbimg.png" />
+        <meta property="og:image:width" content="600" />
+        <meta property="og:image:height" content="315" />
         {!site.siteMetadata.w3l_dom_key ? null : <meta name="w3l-domain-verification" content={site.siteMetadata.w3l_dom_key} />}
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-163532894-1"></script>
         <script>

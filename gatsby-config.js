@@ -8,7 +8,7 @@ module.exports = {
   /* Your site config here */
   siteMetadata: {
     title: `JAPODJADĘ`,
-    description: `A starter blog demonstrating what Gatsby can do.`,
+    description: `Jesteśmy tu po to, żeby połączyć lokalnych dostawców z klientami!`,
     siteUrl: `https://delog-w3layouts.netlify.com/`,
     home: {
       title: `Cześć!`,
