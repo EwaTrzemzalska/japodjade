@@ -58,7 +58,7 @@ export const pageQuery = graphql`
       }
     }
     allAirtable(filter: {data: {Published: {eq: true}}}) {
-      distinct(field: data___Miasto)
+      distinct(field: data___MiastoTrimmed)
       edges {
         node {
           data {
@@ -68,7 +68,7 @@ export const pageQuery = graphql`
             }
           }
             Nazwa
-            Miasto
+            MiastoTrimmed
             Opis
             Kontakt
             Bezkontaktowo

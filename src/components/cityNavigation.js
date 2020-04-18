@@ -4,7 +4,10 @@ import stringUtils from "../utils/string.js"
 
 export default ({ cities }) => {
   const Cities = cities.map(city => {
-    return <Link key={city} to={"/" + stringUtils.escapeDiacritics(city.toLowerCase())}>{city}</Link>
+    return ( 
+    <Link key={city} to={"/" + stringUtils.escapeDiacritics(city.toLowerCase())}>
+      {city}
+    </Link>)
   })
 
   return (

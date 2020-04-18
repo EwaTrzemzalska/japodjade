@@ -13,7 +13,6 @@ export default function Template({
     cities: { distinct }
   },
 }) {
-
   const Posts = edges
     .map(edge => <PostLink key={edge.node.data.Nazwa} post={edge.node} />)
     
@@ -43,7 +42,7 @@ export const pageQuery = graphql`
         w3l_dom_key
       }
     }
-    businesses: allAirtable(filter: {data: {Published: {eq: true}, Miasto: {eq: $city}}}) {
+    businesses: allAirtable(filter: {data: {Published: {eq: true}, MiastoTrimmed: {eq: $city}}}) {
       edges {
         node {
           data {
@@ -53,7 +52,7 @@ export const pageQuery = graphql`
             }
           }
             Nazwa
-            Miasto
+            MiastoTrimmed
             Opis
             Kontakt
             Bezkontaktowo
@@ -63,7 +62,7 @@ export const pageQuery = graphql`
       }
     }
     cities: allAirtable(filter: {data: {Published: {eq: true}}}) {
-        distinct(field: data___Miasto)
+        distinct(field: data___MiastoTrimmed)
       }
   }
 `

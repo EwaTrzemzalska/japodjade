@@ -9,7 +9,7 @@ const PostLink = ({ post }) => (
     <header>
       <h2 className="post-title">{post.data.Nazwa}</h2>
       <div className="post-meta">
-        {post.data.Miasto}
+        {post.data.MiastoTrimmed}
       </div>
     </header>
     <p>{post.data.Opis}</p>

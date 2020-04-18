@@ -21,7 +21,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   const result = await graphql(`
     {
       allAirtable {
-        distinct(field: data___Miasto)
+        distinct(field: data___MiastoTrimmed)
       }
     }
   `)
