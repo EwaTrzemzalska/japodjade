@@ -32,6 +32,12 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
+  createPage({
+    path: "/",
+    component: cityTemplate,
+    context: { },
+  })
+
   result.data.allAirtable.distinct.forEach((city) => {
     console.log("Generating page for " + city)
     createPage({
