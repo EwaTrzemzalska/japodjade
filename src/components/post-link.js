@@ -33,7 +33,7 @@ const PostLink = ({ post }) => {
         </header>
         <p>{post.data.Opis}</p>
         <div>
-          <button onClick={toggleModal}>Jak zamawiać?</button>
+          <a href="#" onClick={toggleModal}>Jak zamawiać?</a>
           <StyledModal
             isOpen={isOpen}
             onBackgroundClick={toggleModal}
