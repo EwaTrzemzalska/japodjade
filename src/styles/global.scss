@@ -7,8 +7,10 @@ body {
   padding: 0;
 }
 * {
-  margin-top: 0
+  // margin-top: 0;
+  box-sizing: border-box;
 }
+
 /* System Fonts as used by Medium and WordPress */
 body {
   font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif;
@@ -29,10 +31,12 @@ a {
   padding: 32px;
   max-width: 1140px;
   margin: 0 auto;
+
   img {
     max-width: 100%;
   }
 }
+
 .navigation {
   font-weight: 300;
   a {
@@ -51,6 +55,7 @@ a {
     }
   }
 }
+
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -59,21 +64,25 @@ a {
   margin-bottom: 32px;
   align-items: center;
 }
+
 .site-title a {
   color: $primary-color;
   text-decoration: none;
   font-weight: 900;
   text-transform: uppercase;
 }
+
 .hero-header {
   padding: 0 0 64px;
   max-width: 980px;
 }
+
 .headline {
   font-size: 36px;
   font-weight: 900;
   margin-bottom: 0.5rem;
 }
+
 .button {
   padding: 18px 27px;
   display: inline-block;
@@ -101,12 +110,14 @@ a {
     color: #00062b;
   }
 }
+
 .primary-content {
   font-size: 18px;
   margin-bottom: 32px;
   line-height: 1.5;
   font-weight: 300;
 }
+
 .post {
   padding: 0;
   background:white;
@@ -129,8 +140,8 @@ a {
     margin-bottom: 32px;
     text-align: center;
   }
-  
 }
+
 .post-thumbnail {
   text-align: center;
   min-height: 380px;
@@ -171,51 +182,71 @@ a {
   max-width: 600px;
   justify-content: center;
 }
+
 .grids {
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fill, minmax(251px, 1fr));
   grid-gap: 32px;
   margin-top: 32px;
 }
+
 .card {
   padding: 20px;
   background:white;
   border-radius: 9px;
   border: 1px solid #eee;
-  box-shadow: 0 0 30px #d5d5d5;
+  box-shadow: 0 0 10px #e7e7e7;
   overflow: hidden;
   line-height: 1.5;
+  transition: box-shadow .2s;
+  max-width: 100% !important;
+
+  &.no-shadow,
+  &.no-shadow:hover {
+    box-shadow: none;
+    cursor: auto;
+  }
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 0 30px #d5d5d5;
+  }
+
   &:hover .post-link {
     color: $primary-color;
   }
 
-.close {
-  border-style: none;
-  font-size: 20px;
-  width: 30px;
-  height: 30px;
-  align-self: flex-end;
-  position: absolute;
-  top: 15px;
-}
+  .close {
+    border-style: none;
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    align-self: flex-end;
+    position: absolute;
+    top: 15px;
 
-.mb-0 {
-  margin-bottom: 0;
-}
+    &:hover {
+      cursor: pointer;
+    }
+  }
 
-.mb-5 {
-  margin-bottom: 5px;
-}
+  .mb-0 {
+    margin-bottom: 0;
+  }
 
-.mb-30 {
-  margin-bottom: 30px;
-}
+  .mb-5 {
+    margin-bottom: 5px;
+  }
 
-.grey-bg {
-  padding: 20px;
-  background: rgba(238, 238, 238, 0.4);
-  border-radius: 9px;
-}
+  .mb-30 {
+    margin-bottom: 30px;
+  }
+
+  .grey-bg {
+    padding: 20px;
+    background: rgba(238, 238, 238, 0.4);
+    border-radius: 9px;
+  }
 
   .img-container {
     height: 100px;
@@ -230,10 +261,6 @@ a {
     }
   }
   
-  header {
-    margin-bottom: 10px;
-  }
-
   h4.subtitle {
     margin-top: 10px;
     margin-bottom: 0;
@@ -253,23 +280,42 @@ a {
   > h2:first-child {
     margin: 0 0 0.5rem 0;
   }
+
   .post-title {
     font-size: 1.2rem;
     margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
+
   .post-meta {
     font-weight: 100;
     margin-bottom: 0;
   }
+
   .post-link {
     color: #333;
     text-decoration: none;
   }
 }
+
+.modal-overflow {
+  display: block !important;
+  // default styles of modal are stronger than this class;
+  overflow-y: auto;
+  min-height: 100vh;
+}
+
+.m-50-auto {
+  margin: 50px auto;
+}
+
 .post-meta {
   font-size: 0.8rem;
   color: #666;
 }
+
 .site-footer {
   text-align: center;
   margin: 90px 0 16px;
@@ -278,6 +324,7 @@ a {
     font-weight: 700;
   }
 }
+
 .form-container {
   background-color: #f7f8fe;
   padding: 32px;
@@ -303,6 +350,7 @@ a {
     height: 150px;
   }
 }
+
 .two-grids {
   display: grid;
   grid-gap: 32px;
@@ -312,17 +360,19 @@ a {
     }
   }
 }
+
 /* Portrait and Landscape */
 @media only screen 
 and (min-width: 768px) {
 .grids {
   grid-template-columns: 1fr 1fr;
+  }
 }
-}
+
 @media only screen 
   and (min-width: 1024px) {
   .grids {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(251px, 1fr));
   }
   .two-grids {
     display: grid;
