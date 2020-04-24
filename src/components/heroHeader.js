@@ -21,7 +21,7 @@ export default () => (
         <div className="primary-content">
           <p>{data.site.siteMetadata.home.description}</p>
         </div>
-        <a href='https://airtable.com/shreMT5Q3JwwPcS9C' target="_blank" className="button -primary">Zgłoś się jako firma! &rarr;</a>
+        <a href='https://airtable.com/shreMT5Q3JwwPcS9C' target="_blank" rel="noopener noreferrer" className="button -primary">Zgłoś się jako firma! &rarr;</a>
       </div>
     )}
   />
