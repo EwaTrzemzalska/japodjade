@@ -38,7 +38,6 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     })
 
     const categories = ["restauracje", "WarzyWa i owoce"]//TODO: fetch from airtable
-    // TODO: change spaces in category for pause
     categories.forEach((category) => {
       const categorySlug = slugify(category, { lower: true })
       console.log("Generating page for " + citySlug + " " + categorySlug)
