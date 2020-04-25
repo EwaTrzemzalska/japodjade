@@ -1,11 +1,12 @@
 import React from "react"
 import {Link} from "gatsby"
-import stringUtils from "../utils/string.js"
+import slugify from "slugify"
 
 export default ({ cities }) => {
   const Cities = cities.map(city => {
+    const citySlug = slugify(city, { lower: true })
     return ( 
-    <Link key={city} to={"/" + stringUtils.escapeDiacritics(city.toLowerCase())}>
+    <Link key={city} to={"/" + citySlug}>
       {city}
     </Link>)
   })
