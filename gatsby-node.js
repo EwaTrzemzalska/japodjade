@@ -37,7 +37,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: { city },
     })
 
-    const categories = ["restauracje", "WarzyWa i owoce"]//TODO: fetch from airtable
+    const categories = ["Restauracja", "Owoce i Warzywa"]//TODO: fetch from airtable
     categories.forEach((category) => {
       const categorySlug = slugify(category, { lower: true })
       console.log("Generating page for " + citySlug + " " + categorySlug)

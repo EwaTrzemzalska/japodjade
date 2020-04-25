@@ -9,13 +9,13 @@ import CityNavigation from "../components/cityNavigation";
 export default function Template({
   data: {
     site,
-    businesses: {edges},
+    businesses: { edges },
     cities: { distinct }
   },
 }) {
   const Posts = edges
     .map(edge => <PostLink key={edge.node.data.Nazwa} post={edge.node} />)
-    
+
   return (
     <Layout>
       <Helmet>
@@ -49,7 +49,7 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query($city: String) {
+  query($city: String, $category: String) {
     site {
       siteMetadata {
         title
@@ -57,25 +57,32 @@ export const pageQuery = graphql`
         w3l_dom_key
       }
     }
-    businesses: allAirtable(filter: {data: {Published: {eq: true}, MiastoTrimmed: {eq: $city}}}) {
-      edges {
-        node {
-          data {
-            Logo {
+    businesses: allAirtable(filter: {
+      data: {
+        Published: {eq: true}, 
+        MiastoTrimmed: {eq: $city}, 
+        Kategoria: {eq: $category}
+      }
+    }) {
+    edges {
+      node {
+        data {
+          Logo {
             localFiles {
               publicURL
             }
           }
-            Nazwa
-            MiastoTrimmed
-            Opis
-            Kontakt
-            Bezkontaktowo
-            Link
-          }
+          Nazwa
+          MiastoTrimmed
+          Opis
+          Kontakt
+          Bezkontaktowo
+          Link
+          Kategoria
         }
       }
     }
+  }
     cities: allAirtable(filter: {data: {Published: {eq: true}}}) {
         distinct(field: data___MiastoTrimmed)
       }
