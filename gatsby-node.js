@@ -32,6 +32,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
+  // generate main page
   createPage({
     path: "/",
     component: cityTemplate,
@@ -45,6 +46,19 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       component: cityTemplate,
       context: { city },
     })
+
+    const categories = ["restauracje", "warzywa i owoce"]//TODO: fetch from airtable
+    // TODO: change spaces in category for pause
+    categories.forEach((category) => {
+      console.log("Generating page for " + city + " " + category)
+      createPage({
+          path: "/" + escapeDiacritics(city.toLowerCase()) + "/" +  escapeDiacritics(category.toLowerCase()),
+          component: cityTemplate,
+          context: { city, category },
+        })
+    }) 
   }
+  // generate pages for each category
+
   )
 }
