@@ -1,6 +1,11 @@
 # Configuration
 
-In file `gatsby-config.js` you need to provide your apiKey and baseId.
+You need to create your own .env file with your credentials in this form:
+
+```
+AIRTABLE_API_KEY=YourAirtableApiKey
+BASE_ID=YourBaseId
+```
 
 # Develop
 

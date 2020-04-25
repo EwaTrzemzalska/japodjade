@@ -4,6 +4,8 @@
  * See: https://www.gatsbyjs.org/docs/gatsby-config/
  */
 
+require('dotenv').config();
+
 module.exports = {
   /* Your site config here */
   siteMetadata: {
@@ -49,11 +51,11 @@ module.exports = {
     {
     resolve: `gatsby-source-airtable`,
     options: {
-      apiKey: `YOUR KEY`, // may instead specify via env, see below
+      apiKey: process.env.AIRTABLE_API_KEY, // may instead specify via env, see below
       concurrency: 5, // default, see using markdown and attachments for more information
       tables: [
         {
-          baseId: `YOUR BASE ID`,
+          baseId: process.env.BASE_ID,
           tableName: `Wszystkie biznesy`,
           mapping: {"Logo": "fileNode"}
         }
