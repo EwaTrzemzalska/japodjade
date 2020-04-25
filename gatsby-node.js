@@ -1,16 +1,5 @@
 const path = require(`path`)
-
-const escapeDiacritics = (s) => {
-  return s.replace(/ą/g, 'a').replace(/Ą/g, 'A')
-    .replace(/ć/g, 'c').replace(/Ć/g, 'C')
-    .replace(/ę/g, 'e').replace(/Ę/g, 'E')
-    .replace(/ł/g, 'l').replace(/Ł/g, 'L')
-    .replace(/ń/g, 'n').replace(/Ń/g, 'N')
-    .replace(/ó/g, 'o').replace(/Ó/g, 'O')
-    .replace(/ś/g, 's').replace(/Ś/g, 'S')
-    .replace(/ż/g, 'z').replace(/Ż/g, 'Z')
-    .replace(/ź/g, 'z').replace(/Ź/g, 'Z');
-}
+const slugify = require('slugify')
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
 
@@ -36,29 +25,28 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
   createPage({
     path: "/",
     component: cityTemplate,
-    context: { },
+    context: {},
   })
 
   result.data.allAirtable.distinct.forEach((city) => {
-    console.log("Generating page for " + city)
+    const citySlug = slugify(city, { lower: true })
+    console.log("Generating page for " + citySlug)
     createPage({
-      path: "/" + escapeDiacritics(city.toLowerCase()),
+      path: "/" + citySlug,
       component: cityTemplate,
       context: { city },
     })
 
-    const categories = ["restauracje", "warzywa i owoce"]//TODO: fetch from airtable
+    const categories = ["restauracje", "WarzyWa i owoce"]//TODO: fetch from airtable
     // TODO: change spaces in category for pause
     categories.forEach((category) => {
-      console.log("Generating page for " + city + " " + category)
+      const categorySlug = slugify(category, { lower: true })
+      console.log("Generating page for " + citySlug + " " + categorySlug)
       createPage({
-          path: "/" + escapeDiacritics(city.toLowerCase()) + "/" +  escapeDiacritics(category.toLowerCase()),
-          component: cityTemplate,
-          context: { city, category },
-        })
-    }) 
-  }
-  // generate pages for each category
-
-  )
+        path: "/" + citySlug + "/" + categorySlug,
+        component: cityTemplate,
+        context: { city, category },
+      })
+    })
+  })
 }
