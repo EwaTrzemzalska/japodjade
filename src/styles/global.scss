@@ -43,6 +43,7 @@ a {
     color: #888;
     text-decoration: none;
     margin: 0 8px 0;
+    display: inline-block;
     &.active {
       color: $primary-color;
       font-weight: 700;
