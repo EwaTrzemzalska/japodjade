@@ -6,7 +6,7 @@ export default ({ cities }) => {
   const Cities = cities.map(city => {
     const citySlug = slugify(city, { lower: true })
     return ( 
-    <Link key={city} to={"/" + citySlug}>
+    <Link key={city} to={"/" + citySlug} partiallyActive={true} activeClassName="active">
       {city}
     </Link>)
   })
@@ -14,7 +14,7 @@ export default ({ cities }) => {
   return (
     <nav className="navigation">
       <legend>Miasta:</legend>
-      <Link to="/">Wszystkie</Link>
+      <Link to="/" activeClassName="active">Wszystkie</Link>
       {Cities}
     </nav>
   )

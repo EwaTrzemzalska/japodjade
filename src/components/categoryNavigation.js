@@ -7,7 +7,7 @@ export default ({ city, categories }) => {
   const Categories = categories.map(category => {
     const categorySlug = slugify(category, { lower: true })
     return (
-    <Link key={category} to={"/" + citySlug + "/" + categorySlug}>
+    <Link key={category} to={"/" + citySlug + "/" + categorySlug} partiallyActive={true} activeClassName="active">
       {category}
     </Link>)
   })
@@ -15,7 +15,7 @@ export default ({ city, categories }) => {
   return (
     <nav className="navigation"> 
       <legend>Kategorie:</legend>
-      <Link to={"/" + citySlug}>Wszystkie</Link>
+      <Link to={"/" + citySlug } activeClassName="active">Wszystkie</Link>
       {/* ma linkować do danego miasta
       jezeli krakow, to ma linkowac do /krakow
       
