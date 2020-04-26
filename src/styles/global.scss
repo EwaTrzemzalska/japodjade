@@ -38,6 +38,7 @@ a {
 
 .navigation {
   font-weight: 300;
+  margin-bottom: 20px;
   a {
     color: #888;
     text-decoration: none;
@@ -51,6 +52,9 @@ a {
     }
     &:last-child {
       margin-right: 0;
+    }
+    &:first-of-type {
+      margin-left: 0;
     }
   }
 }
@@ -226,18 +230,6 @@ a {
     cursor: pointer;
   }
 
-  .mb-0 {
-    margin-bottom: 0;
-  }
-
-  .mb-5 {
-    margin-bottom: 5px;
-  }
-
-  .mb-30 {
-    margin-bottom: 30px;
-  }
-
   .grey-bg {
     padding: 20px;
     background: rgba(238, 238, 238, 0.4);
@@ -305,6 +297,18 @@ a {
 
 .m-50-auto {
   margin: 50px auto;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
 }
 
 .post-meta {
