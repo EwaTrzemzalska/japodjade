@@ -36,9 +36,6 @@ const PostLink = ({ post }) => {
           <div className="post-meta">
             {post.data.MiastoTrimmed}
           </div>
-          <div>
-          {post.data.Kategoria}
-          </div>
         </header>
       </article>
       <StyledModal
