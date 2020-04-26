@@ -9,8 +9,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      allAirtable {
+      cities: allAirtable {
         distinct(field: data___MiastoTrimmed)
+      }
+      categories: allAirtable(filter: {data: {Published: {eq: true}}}) {
+        distinct(field: data___Kategoria)
       }
     }
   `)
@@ -28,7 +31,9 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     context: {},
   })
 
-  result.data.allAirtable.distinct.forEach((city) => {
+  console.log(result.data.cities.distinct)
+
+  result.data.cities.distinct.forEach((city) => {
     const citySlug = slugify(city, { lower: true })
     console.log("Generating page for " + citySlug)
     createPage({
@@ -37,7 +42,7 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
       context: { city },
     })
 
-    const categories = ["Restauracja", "Owoce i Warzywa"]//TODO: fetch from airtable
+    const categories = result.data.categories.distinct
     categories.forEach((category) => {
       const categorySlug = slugify(category, { lower: true })
       console.log("Generating page for " + citySlug + " " + categorySlug)

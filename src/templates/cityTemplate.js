@@ -11,7 +11,8 @@ export default function Template({
   data: {
     site,
     businesses: { edges },
-    cities: { distinct }
+    cities,
+    categories
   },
   pageContext: { city }
 }) {
@@ -42,9 +43,9 @@ export default function Template({
       </Helmet>
       <HeroHeader />
       <h2>Lista Firm &darr;</h2>
-      <CityNavigation cities={distinct} />
+      <CityNavigation cities={cities.distinct} />
 
-      {city !== undefined && <CategoryNavigation categories={["Restauracja", "Owoce i Warzywa"]} city={city} />}
+      {city !== undefined && <CategoryNavigation categories={categories.distinct} city={city} />}
 
       <div className="grids">
         {Posts}
@@ -89,8 +90,11 @@ export const pageQuery = graphql`
     }
   }
     cities: allAirtable(filter: {data: {Published: {eq: true}}}) {
-        distinct(field: data___MiastoTrimmed)
-      }
+      distinct(field: data___MiastoTrimmed)
+    }
+    categories: allAirtable(filter: {data: {Published: {eq: true}}}) {
+      distinct(field: data___Kategoria)
+    }
   }
 `
 
