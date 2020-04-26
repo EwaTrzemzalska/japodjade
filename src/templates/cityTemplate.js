@@ -5,6 +5,7 @@ import Layout from "../components/layout"
 import PostLink from "../components/post-link"
 import HeroHeader from "../components/heroHeader"
 import CityNavigation from "../components/cityNavigation";
+import CategoryNavigation from "../components/categoryNavigation"
 
 export default function Template({
   data: {
@@ -12,7 +13,10 @@ export default function Template({
     businesses: { edges },
     cities: { distinct }
   },
+  location: { pathname }
 }) {
+
+  console.log(pathname)
   const Posts = edges
     .map(edge => <PostLink key={edge.node.data.Nazwa} post={edge.node} />)
 
@@ -41,6 +45,9 @@ export default function Template({
       <HeroHeader />
       <h2>Lista Firm &darr;</h2>
       <CityNavigation cities={distinct} />
+
+      {pathname !== "/" && <CategoryNavigation categories={["Restauracja", "Owoce i Warzywa"]} city={pathname} />}
+      
       <div className="grids">
         {Posts}
       </div>
