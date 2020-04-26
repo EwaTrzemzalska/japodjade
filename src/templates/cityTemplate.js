@@ -92,7 +92,7 @@ export const pageQuery = graphql`
     cities: allAirtable(filter: {data: {Published: {eq: true}}}) {
       distinct(field: data___MiastoTrimmed)
     }
-    categories: allAirtable(filter: {data: {Published: {eq: true}}}) {
+    categories: allAirtable(filter: {data: {Published: {eq: true}, MiastoTrimmed: {eq: $city}}}) {
       distinct(field: data___Kategoria)
     }
   }
