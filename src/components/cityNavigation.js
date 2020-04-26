@@ -13,7 +13,7 @@ export default ({ cities }) => {
 
   return (
     <nav className="navigation">
-      <legend className="mb-5"><b>Miasta:</b></legend>
+      <legend className="mb-5">Miasta:</legend>
       <Link to="/" activeClassName="active">Wszystkie</Link>
       {Cities}
     </nav>

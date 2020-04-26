@@ -42,7 +42,7 @@ a {
   a {
     color: #888;
     text-decoration: none;
-    margin: 0 8px 0;
+    margin-right: 16px;
     display: inline-block;
     &.active {
       color: $primary-color;
@@ -54,9 +54,10 @@ a {
     &:last-child {
       margin-right: 0;
     }
-    &:first-of-type {
-      margin-left: 0;
-    }
+  }
+  legend {
+    font-weight: 700;
+    padding-left: 0;
   }
 }
 
