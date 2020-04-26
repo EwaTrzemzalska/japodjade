@@ -2,6 +2,15 @@ import React from "react"
 import Modal from 'styled-react-modal'
 import Linkify from 'linkifyjs/react';
 
+const StyledModal = Modal.styled`
+    width: 40rem;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: white;
+    position: relative;
+  `
 
 const PostLink = ({ post }) => {
 
@@ -11,17 +20,6 @@ const PostLink = ({ post }) => {
     e.preventDefault();
     setIsOpen(!isOpen)
   }
-
-
-  const StyledModal = Modal.styled`
-    width: 40rem;
-    border-radius: 9px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    background-color: white;
-    position: relative;
-  `
 
   const linkifyOptions = {
     attributes: {rel: "noopener norefferer"}
@@ -37,6 +35,9 @@ const PostLink = ({ post }) => {
           <h2 className="post-title">{post.data.Nazwa}</h2>
           <div className="post-meta">
             {post.data.MiastoTrimmed}
+          </div>
+          <div>
+          {post.data.Kategoria}
           </div>
         </header>
       </article>
