@@ -3,10 +3,11 @@ import {Link} from "gatsby"
 import slugify from "slugify"
 
 export default ({ city, categories }) => {
+  const citySlug = slugify(city, { lower: true })
   const Categories = categories.map(category => {
     const categorySlug = slugify(category, { lower: true })
-    return ( 
-    <Link key={category} to={city + "/" + categorySlug}>
+    return (
+    <Link key={category} to={"/" + citySlug + "/" + categorySlug}>
       {category}
     </Link>)
   })
@@ -14,7 +15,7 @@ export default ({ city, categories }) => {
   return (
     <nav className="navigation"> 
       <legend>Kategorie:</legend>
-      <Link to={city}>Wszystkie</Link>
+      <Link to={"/" + citySlug}>Wszystkie</Link>
       {/* ma linkować do danego miasta
       jezeli krakow, to ma linkowac do /krakow
       

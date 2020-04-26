@@ -13,10 +13,8 @@ export default function Template({
     businesses: { edges },
     cities: { distinct }
   },
-  location: { pathname }
+  pageContext: { city }
 }) {
-
-  console.log(pathname)
   const Posts = edges
     .map(edge => <PostLink key={edge.node.data.Nazwa} post={edge.node} />)
 
@@ -46,8 +44,8 @@ export default function Template({
       <h2>Lista Firm &darr;</h2>
       <CityNavigation cities={distinct} />
 
-      {pathname !== "/" && <CategoryNavigation categories={["Restauracja", "Owoce i Warzywa"]} city={pathname} />}
-      
+      {city !== undefined && <CategoryNavigation categories={["Restauracja", "Owoce i Warzywa"]} city={city} />}
+
       <div className="grids">
         {Posts}
       </div>
