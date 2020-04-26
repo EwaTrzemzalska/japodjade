@@ -16,10 +16,6 @@ export default ({ city, categories }) => {
     <nav className="navigation"> 
       <legend>Kategorie:</legend>
       <Link to={"/" + citySlug } activeClassName="active">Wszystkie</Link>
-      {/* ma linkować do danego miasta
-      jezeli krakow, to ma linkowac do /krakow
-      
-      */}
       {Categories}
     </nav>
   )
