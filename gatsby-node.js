@@ -1,16 +1,5 @@
 const path = require(`path`)
-
-const escapeDiacritics = (s) => {
-  return s.replace(/ą/g, 'a').replace(/Ą/g, 'A')
-    .replace(/ć/g, 'c').replace(/Ć/g, 'C')
-    .replace(/ę/g, 'e').replace(/Ę/g, 'E')
-    .replace(/ł/g, 'l').replace(/Ł/g, 'L')
-    .replace(/ń/g, 'n').replace(/Ń/g, 'N')
-    .replace(/ó/g, 'o').replace(/Ó/g, 'O')
-    .replace(/ś/g, 's').replace(/Ś/g, 'S')
-    .replace(/ż/g, 'z').replace(/Ż/g, 'Z')
-    .replace(/ź/g, 'z').replace(/Ź/g, 'Z');
-}
+const slugify = require('slugify')
 
 exports.createPages = async ({ actions, graphql, reporter }) => {
 
@@ -20,8 +9,11 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
 
   const result = await graphql(`
     {
-      allAirtable {
+      cities: allAirtable {
         distinct(field: data___MiastoTrimmed)
+      }
+      categories: allAirtable(filter: {data: {Published: {eq: true}}}) {
+        distinct(field: data___Kategoria)
       }
     }
   `)
@@ -32,19 +24,33 @@ exports.createPages = async ({ actions, graphql, reporter }) => {
     return
   }
 
+  // generate main page
   createPage({
     path: "/",
     component: cityTemplate,
-    context: { },
+    context: {},
   })
 
-  result.data.allAirtable.distinct.forEach((city) => {
-    console.log("Generating page for " + city)
+  console.log(result.data.cities.distinct)
+
+  result.data.cities.distinct.forEach((city) => {
+    const citySlug = slugify(city, { lower: true })
+    console.log("Generating page for " + citySlug)
     createPage({
-      path: "/" + escapeDiacritics(city.toLowerCase()),
+      path: "/" + citySlug,
       component: cityTemplate,
       context: { city },
     })
-  }
-  )
+
+    const categories = result.data.categories.distinct
+    categories.forEach((category) => {
+      const categorySlug = slugify(category, { lower: true })
+      console.log("Generating page for " + citySlug + " " + categorySlug)
+      createPage({
+        path: "/" + citySlug + "/" + categorySlug,
+        component: cityTemplate,
+        context: { city, category },
+      })
+    })
+  })
 }

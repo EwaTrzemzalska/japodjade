@@ -38,11 +38,13 @@ a {
 
 .navigation {
   font-weight: 300;
+  margin-bottom: 20px;
   a {
     color: #888;
     text-decoration: none;
-    margin: 0 8px 0;
-    &[aria-current] {
+    margin-right: 16px;
+    display: inline-block;
+    &.active {
       color: $primary-color;
       font-weight: 700;
     }
@@ -52,6 +54,10 @@ a {
     &:last-child {
       margin-right: 0;
     }
+  }
+  legend {
+    font-weight: 700;
+    padding-left: 0;
   }
 }
 
@@ -226,18 +232,6 @@ a {
     cursor: pointer;
   }
 
-  .mb-0 {
-    margin-bottom: 0;
-  }
-
-  .mb-5 {
-    margin-bottom: 5px;
-  }
-
-  .mb-30 {
-    margin-bottom: 30px;
-  }
-
   .grey-bg {
     padding: 20px;
     background: rgba(238, 238, 238, 0.4);
@@ -305,6 +299,18 @@ a {
 
 .m-50-auto {
   margin: 50px auto;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.mb-5 {
+  margin-bottom: 5px;
+}
+
+.mb-30 {
+  margin-bottom: 30px;
 }
 
 .post-meta {

@@ -5,17 +5,20 @@ import Layout from "../components/layout"
 import PostLink from "../components/post-link"
 import HeroHeader from "../components/heroHeader"
 import CityNavigation from "../components/cityNavigation";
+import CategoryNavigation from "../components/categoryNavigation"
 
 export default function Template({
   data: {
     site,
-    businesses: {edges},
-    cities: { distinct }
+    businesses: { edges },
+    cities,
+    categories
   },
+  pageContext: { city }
 }) {
   const Posts = edges
     .map(edge => <PostLink key={edge.node.data.Nazwa} post={edge.node} />)
-    
+
   return (
     <Layout>
       <Helmet>
@@ -40,7 +43,10 @@ export default function Template({
       </Helmet>
       <HeroHeader />
       <h2>Lista Firm &darr;</h2>
-      <CityNavigation cities={distinct} />
+      <CityNavigation cities={cities.distinct} />
+
+      {city !== undefined && <CategoryNavigation categories={categories.distinct} city={city} />}
+
       <div className="grids">
         {Posts}
       </div>
@@ -49,7 +55,7 @@ export default function Template({
 }
 
 export const pageQuery = graphql`
-  query($city: String) {
+  query($city: String, $category: String) {
     site {
       siteMetadata {
         title
@@ -57,28 +63,38 @@ export const pageQuery = graphql`
         w3l_dom_key
       }
     }
-    businesses: allAirtable(filter: {data: {Published: {eq: true}, MiastoTrimmed: {eq: $city}}}) {
-      edges {
-        node {
-          data {
-            Logo {
+    businesses: allAirtable(filter: {
+      data: {
+        Published: {eq: true}, 
+        MiastoTrimmed: {eq: $city}, 
+        Kategoria: {eq: $category}
+      }
+    }) {
+    edges {
+      node {
+        data {
+          Logo {
             localFiles {
               publicURL
             }
           }
-            Nazwa
-            MiastoTrimmed
-            Opis
-            Kontakt
-            Bezkontaktowo
-            Link
-          }
+          Nazwa
+          MiastoTrimmed
+          Opis
+          Kontakt
+          Bezkontaktowo
+          Link
+          Kategoria
         }
       }
     }
+  }
     cities: allAirtable(filter: {data: {Published: {eq: true}}}) {
-        distinct(field: data___MiastoTrimmed)
-      }
+      distinct(field: data___MiastoTrimmed)
+    }
+    categories: allAirtable(filter: {data: {Published: {eq: true}, MiastoTrimmed: {eq: $city}}}) {
+      distinct(field: data___Kategoria)
+    }
   }
 `
 
